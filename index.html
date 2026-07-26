@@ -455,13 +455,24 @@
     .glass,
     .glass-sm,
     .glass-nav,
-    .glass-pill,
     .glass-solid {
       background: #ffffff !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
       border: 1px solid rgba(10, 9, 19, 0.1) !important;
       box-shadow: 0 8px 22px rgba(10, 9, 19, 0.06) !important;
+    }
+
+    .glass-pill {
+      background: #ffffff !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid rgba(10, 9, 19, 0.12) !important;
+      box-shadow: none !important;
+    }
+
+    a.glass-pill:hover, button.glass-pill:hover {
+      box-shadow: none !important;
     }
 
     .glass::before,
@@ -924,9 +935,7 @@
         <!-- Hero brand mark: IELTS Persons logo + class name -->
         <div class="reveal-card relative inline-flex items-center gap-4 mb-7">
           <div class="relative shrink-0" style="width: 96px; height: 96px;">
-            <!-- Soft purple halo glow -->
-            <div class="absolute inset-0 rounded-full" style="background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.32) 0%, rgba(124, 58, 237, 0.10) 45%, transparent 70%); filter: blur(8px); transform: scale(1.25);" aria-hidden="true"></div>
-            <div class="absolute inset-0 rounded-full overflow-hidden bg-white" style="box-shadow: 0 0 0 1.5px rgba(124,58,237,0.45), 0 8px 24px -6px rgba(124,58,237,0.32), inset 0 1px 0 rgba(255,255,255,0.9), inset 0 -1px 0 rgba(124,58,237,0.18);">
+            <div class="absolute inset-0 rounded-full overflow-hidden bg-white" style="border: 1px solid rgba(124,58,237,0.25);">
               <img src="assets/logo-circle.png" alt="IELTS Persons" class="w-full h-full object-cover block" style="transform: scale(1.04);">
             </div>
           </div>
