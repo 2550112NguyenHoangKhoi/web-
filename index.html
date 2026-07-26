@@ -644,20 +644,6 @@
     /* ════════════════════════════════════════════
        V. INTERACTIONS
        ════════════════════════════════════════════ */
-    #cursor-glow {
-      /* Apple doesn't use cursor-following effects on apple.com — tone this
-         way down so it reads as ambient warmth, not a tracker. */
-      position: fixed;
-      width: 480px; height: 480px;
-      top: 0; left: 0;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(var(--accent-rgb), 0.045) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-      will-change: transform;
-    }
 
     .btn-magnetic { will-change: transform; }
 
@@ -899,7 +885,6 @@
     </defs>
   </svg>
 
-  <div id="cursor-glow"></div>
 
   <!-- Custom scroll indicator: vertical pill on right edge -->
   <div id="scroll-indicator" class="fixed right-2 sm:right-3 z-40 pointer-events-none" style="top: 90px; bottom: 32px; width: 4px;" aria-hidden="true">
@@ -953,13 +938,6 @@
           </div>
         </div>
 
-        <div class="reveal-card glass-pill inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-xs font-bold mb-8" style="color: var(--text-primary); transition-delay: 60ms;">
-          <span class="relative inline-flex h-2 w-2 shrink-0">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background: var(--accent);"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2" style="background: var(--accent);"></span>
-          </span>
-          Khai giảng khóa tháng 4/2026
-        </div>
         
         <h1 class="text-h1">
           <span id="type-line-1"></span><br>
@@ -1346,26 +1324,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       const isMobile = window.matchMedia('(pointer: coarse)').matches;
 
-      // ==========================================
-      // CURSOR GLOW (desktop only, follows lazily)
-      // ==========================================
-      const cursorGlow = document.getElementById('cursor-glow');
-      let cgX = window.innerWidth / 2, cgY = window.innerHeight / 2;
-      let targetCgX = cgX, targetCgY = cgY;
-      
-      if (!isMobile) {
-        window.addEventListener('mousemove', e => {
-          targetCgX = e.clientX; targetCgY = e.clientY;
-          cursorGlow.style.opacity = 1;
-        }, { passive: true });
-        function animateCursorGlow() {
-          cgX += (targetCgX - cgX) * 0.08;
-          cgY += (targetCgY - cgY) * 0.08;
-          cursorGlow.style.transform = `translate3d(${cgX - 180}px, ${cgY - 180}px, 0)`;
-          requestAnimationFrame(animateCursorGlow);
-        }
-        animateCursorGlow();
-      }
 
       // ==========================================
       // GLARE — linear sweep based on cursor X
